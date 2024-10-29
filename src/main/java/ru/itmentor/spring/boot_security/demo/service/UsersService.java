@@ -18,4 +18,6 @@ public interface UsersService {
 
     public List<User> getAllUsers();
 
+    User findByUsername(String name);
+
 }

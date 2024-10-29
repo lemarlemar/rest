@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class UsersServiceImpl implements UsersService{
+public class UsersServiceImpl implements UsersService {
 
     private UserDao userDao;
 
@@ -43,4 +43,9 @@ public class UsersServiceImpl implements UsersService{
     public List<User> getAllUsers() {
         return userDao.getAllUsers();
     }
+
+    public User findByUsername(String name){
+        return userDao.findByUsername(name);
+    }
+
 }

@@ -20,7 +20,7 @@ public class UsersController {
     @GetMapping
     public String getUsers(Model model) {
         model.addAttribute("users", usersServiceImpl.getAllUsers());
-        return "users";
+        return "/admin/users";
     }
 
     @GetMapping("/add")
@@ -31,13 +31,13 @@ public class UsersController {
     @GetMapping("/delete/{id}")
     public String deleteUser(@PathVariable("id") int id) {
         usersServiceImpl.deleteUser(id);
-        return "redirect:/users";
+        return "redirect:/admin/users";
     }
 
     @GetMapping("edit/{id}")
     public String editUser(@PathVariable("id") int id, Model model) {
         model.addAttribute("user", usersServiceImpl.getUserById(id));
-        return "edit_user";
+        return "/admin/edit_user";
     }
 
     @PostMapping("edit/{id}")
@@ -46,19 +46,19 @@ public class UsersController {
         updatedUser.setName(name);
         usersServiceImpl.editUser(id, updatedUser);
         model.addAttribute("user", usersServiceImpl.getUserById(id));
-        return "redirect:/users";
+        return "redirect:/admin/users";
     }
 
     @PostMapping(value = "/add")
     public String createUser(@ModelAttribute User user) {
         usersServiceImpl.addUser(user);
-        return "redirect:/users";
+        return "redirect:/admin/users";
     }
 
     @GetMapping("userinfo/{id}")
     public String userInfo(@PathVariable("id") int id, Model model) {
         model.addAttribute("user", usersServiceImpl.getUserById(id));
-        return "userinfo";
+        return "/user/userinfo";
     }
 }
 
