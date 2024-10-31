@@ -1,6 +1,7 @@
 package ru.itmentor.spring.boot_security.demo.UserDao;
 
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 import ru.itmentor.spring.boot_security.demo.model.User;
 
@@ -10,13 +11,10 @@ import java.util.List;
 @Repository
 public class UserDaoImpl implements UserDao {
 
+    private BCryptPasswordEncoder passwordEncoder;
+
     @PersistenceContext
     private EntityManager entityManager;
-
-
-
-
-
 
     @Override
     public List<User> getAllUsers() {
@@ -26,6 +24,8 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void createUser(User user) {
+        String hashedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hashedPassword);
         entityManager.persist(user);
     }
 

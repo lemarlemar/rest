@@ -40,6 +40,14 @@ public class User implements UserDetails {
     public User(){
     }
 
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
     public int getId() {
         return id;
     }

@@ -16,13 +16,22 @@
 </head>
 <body>
 <div id="user-form">
-  <form method="post">
+  <form th:action="@{admin/add}" th:object="${user}" method="post">
     <label for="name">Name</label><br>
     <input type="text" id="name" name="name"><br><br>
 
     <label for="email">email</label><br>
     <input type="text" id="email" name="email"><br><br>
 
+    <label for="password">Password</label><br>
+    <input type="password" id="password" name="password" required><br><br>
+
+    <label for="role">Role</label><br>
+    <select id="role" name="role" required>
+      <option value="ROLE_USER">USER</option>
+      <option value="ROLE_ADMIN">ADMIN</option></select><br><br>
+
+<!--      <button type="submit">Add User</button>-->
     <button type="submit" name="addUser" value="addUser">Add User</button>
   </form>
 </div>

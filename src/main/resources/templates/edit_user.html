@@ -7,7 +7,7 @@
 <body>
 <h2>Edit User</h2>
 
-<form th:action="@{/users/edit/{id}(id=${user.id})}" method="post">
+<form th:action="@{/admin/edit/{id}(id=${user.id})}" method="post">
   <input type="hidden" th:value="${user.id}" name="id"/>
 
   <label for="name">New Name:</label>
@@ -16,6 +16,6 @@
   <button type="submit">Update</button>
 </form>
 
-<a th:href="@{/users}">Back to Users List</a>
+<a th:href="@{/admin}">Back to Users List</a>
 </body>
 </html>
