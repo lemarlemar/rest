@@ -17,15 +17,15 @@ import ru.itmentor.spring.boot_security.demo.service.UsersServiceImpl;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    private final SuccessUserHandler successUserHandler;
+//    private final SuccessUserHandler successUserHandler;
 
-    private final CustomUserService customUserService;
+//    private final CustomUserService customUserService;
 
 
-    public WebSecurityConfig(SuccessUserHandler successUserHandler, CustomUserService customUserService) {
-        this.successUserHandler = successUserHandler;
-        this.customUserService = customUserService;
-    }
+//    public WebSecurityConfig(SuccessUserHandler successUserHandler, CustomUserService customUserService) {
+//       this.successUserHandler = successUserHandler;
+//        this.customUserService = customUserService;
+//    }
 
 
     @Bean
@@ -33,10 +33,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder(10);
     }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(customUserService).passwordEncoder(encoder());
-    }
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(customUserService).passwordEncoder(encoder());
+//    }
 
 
     @Override
@@ -48,7 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/index").permitAll() // Доступ к / и /index для всех
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().successHandler(successUserHandler) // Перенаправление после успешной авторизации
+                .formLogin().successHandler(new SuccessUserHandler()) // Перенаправление после успешной авторизации
                 .permitAll()
                 .and()
                 .logout()

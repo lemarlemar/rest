@@ -56,7 +56,7 @@ public class AdminController {
         return "redirect:/admin/users";
     }
 
-    @PostMapping( "admin/add")
+    @PostMapping( "add")
     public String createUser(@ModelAttribute User user) {
         usersServiceImpl.addUser(user);
         return "redirect:/admin/users";
