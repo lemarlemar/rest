@@ -27,11 +27,6 @@ public class AdminRestController {
         this.passwordEncoder = passwordEncoder;
     }
 
-//    @GetMapping("/add")
-//    public User add(@Valid User user, BindingResult bindingResult) {
-//        usersServiceImpl.addUser(user);
-//        return user;
-//    }
 
     @GetMapping("/users")
     public List<User> getUsers() {
@@ -53,7 +48,7 @@ public class AdminRestController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("edit/{id}")
     public ResponseEntity<HttpStatus> updateUser(@PathVariable("id") int id, @RequestBody User updatedUser, BindingResult bindingResult) {
         User existingUser = usersServiceImpl.getUserById(id);
         if (existingUser == null) {
