@@ -2,7 +2,6 @@ package ru.itmentor.spring.boot_security.demo.UserDao;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import ru.itmentor.spring.boot_security.demo.model.User;
@@ -22,7 +21,6 @@ public class UserDaoImpl implements UserDao {
     public List<User> getAllUsers() {
         return entityManager.createQuery("SELECT user FROM User user", User.class).getResultList();
     }
-
 
     @Override
     public void createUser(User user) {

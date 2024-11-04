@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.itmentor.spring.boot_security.demo.UserDao.UserDao;
 import ru.itmentor.spring.boot_security.demo.model.User;
+import ru.itmentor.spring.boot_security.demo.util.UserNotFoundException;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class UsersServiceImpl implements UsersService {
         this.userDao = userDao;
     }
 
-    public User getUserById(int id) {
+    public User getUserById(int id) throws UserNotFoundException {
         return userDao.getUserById(id);
     }
 
